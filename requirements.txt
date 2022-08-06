@@ -4,3 +4,7 @@ sklearn
 joblib
 matplotlib
 streamlit
+numpy
+shap
+pandas
+matplotlib.pyplot
