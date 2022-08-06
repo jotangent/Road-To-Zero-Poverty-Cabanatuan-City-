@@ -7,4 +7,3 @@ streamlit
 numpy
 shap
 pandas
-matplotlib.pyplot
