@@ -36,7 +36,7 @@ elif add_selectbox == "Poverty Classifier at Household Level":
     features = st.container()
 
     with header:
-        st.header("Welcome to our Poverty Classifier at Household Level")
+        st.header("Welcome to our Household Poverty Classifier")
         st.markdown(
             
         """
@@ -52,7 +52,6 @@ elif add_selectbox == "Poverty Classifier at Household Level":
 
     with features:
         st.subheader("Please input the necessary features of a household")
-        st.markdown("These features are selected")
 
         sel_col, disp_col = st.columns(2)
 
