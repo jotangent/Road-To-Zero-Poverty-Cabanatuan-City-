@@ -1,0 +1,227 @@
+﻿excel column,code,name,note
+L,hh_totmem,total number of household members,
+M,hh_totmem_male,total number of male household members,
+N,hh_totmem_female,total number of female household members,
+O,hh_fototmem,?,to_drop
+P,hh_fototmem_male,?,to_drop
+Q,hh_fototmem_female,?,to_drop
+R,hh_fowtotmem, total number of filipino overseas workers,to_drop
+S,hh_fowtotmem_male,total number of male filipino overseas workers,to_drop
+T,hh_fowtotmem_female,total number of female filipino overseas workers,to_drop
+U,nmen04,number of household members ages (0-4),to_drop_redundant
+V,nmem04_male,number of household male members ages (0-4),to_drop_redundant
+W,nmem04_female,number of household female members ages (0-4),to_drop_redundant
+X,nmen05,number of household members ages (0-5),null_to_zero
+Y,nmem05_male,number of household male members ages (0-5),null_to_zero
+Z,nmem05_female,number of household female members ages (0-5),null_to_zero
+AA,nmaln05,number of household members with malnutrition ages (0-5),null_to_zero
+AB,nmaln05_male,number of household male members with malnutrition ages (0-5),null_to_zero
+AC,nmaln05_female,number of household female members with malnutrition ages (0-5),null_to_zero
+AD,ndeath04,number of death ages (0-4),to_drop_redundant
+AE,ndeath04_male,number of male death ages (0-4),to_drop_redundant
+AF,ndeath04_female,number of female death ages (0-4),to_drop_redundant
+AG,ndeath05,number of death ages (0-5),null_to_zero
+AH,ndeath05_male,number of male death ages (0-5),null_to_zero
+AI,ndeath05_female,number of female death ages (0-5),null_to_zero
+AJ,nmem01,number of household members under 1,
+AK,nmem01_male,number of male household members under 1,
+AL,nmem01_female,number of female household members under 1,
+AM,ndeath01,number of death under age of 1,
+AN,ndeath01_male,number of male death under age of 1,
+AO,ndeath01_female,number of female death under age of 1,
+AP,ndeathpreg,number of pregnancy related death,
+AQ,ndeathpreg_male,number of male pregnancy related death,
+AR,ndeathpreg_female,number of female pregnancy related death,
+AS,wmem04,with household member ages (0-4),to_drop_redundant
+AT,wmem05,with household member ages (0-5),
+AU,wmaln05,with malnourished member ages (0-5) (one_hot_encoded),
+AV,hh_wmaln05,with malnourished member ages (0-5) (text_data),
+AW,wmem04d, number of disability age 0-4(?),seems_like_redundant
+AX,wmem05d,number of disability age 0-5(?),seems_like_redundant
+AY,wdeath04,with child death ages (0-4) (one_hot_encoded),to_drop_redundant
+AZ,hh_wdeath04,with child death ages (0-4) (text_data),to_drop_redundant
+BA,wdeath05,with child death ages (0-5) (one_hot_encoded),
+BB,hh_wdeath05,with child death ages (0-5) (text_data),
+BC,wmem01,with member under age of 1 (one_hot_encoded),
+BD,wmem01d,number of disability age 0-1,
+BE,wdeathpreg,with pregnancy related death (one_hot_encoded),
+BF,hh_wdeathpreg,with pregnancy related death (text_data),
+BG,squat,informal settler or not (one_hot_encoded),
+BH,nsquat,number of household member if squat,
+BI,nsquat_male,number of male household member if squat,
+BJ,nsquat_female,number of female household member if squat,
+BK,hh_squat,informal settler or not (text_data),
+BL,msh,living in makeshift housing? (one_hot_encoded),
+BM,nmsh,number of members living in makeshift housing,
+BN,nmsh_male,number of male members living in makeshift housing,
+BO,nmsh_female,number of female members living in makeshift housing,
+BP,hh_msh,living in makeshift housing? (text_data),
+BQ,ntsws,with access to safe water? (OHE),
+BR,nntsws,number of members with access to safe water,
+BS,nntsws_male,number of male members with access to safe water,
+BT,nntsws_female,number of female members with access to safe water,
+BU,hh_ntsws,with access to safe water? (text_data,
+BV,ntstf,with access to sanitary toilet? (OHE),
+BW,nntstf,number of members with access to sanitary toilet,
+BX,nntstf_male,number of male members with access to sanitary toilet,
+BY,nntstf_female,number of female members with access to sanitary toilet,
+BZ,hh_ntstf,with access to sanitary toilet? (text_data,
+CA,nmem5,number of members ages (0-5),
+CB,nmem5_male,number of male members ages (0-5),
+CC,nmem5_female,number of female members ages (0-5),
+CD,nntkinder5,number of members ages (0-5) not attending kinder,
+CE,nntkinder5_male,number of male members ages (0-5) not attending kinder,
+CF,nntkinder5_female,number of female members ages (0-5) not attending kinder,
+CG,nmem611,number of members ages (6-11),
+CH,nmem611_male,number of male members ages (6-11),
+CI,nmem611_female,number of female members ages (6-11),
+CJ,nntelem611,number of members ages (6-11) not attending elementary,
+CK,nntelem611_male,number of male members ages (6-11) not attending elementary,
+CL,nntelem611_female,number of female members ages (6-11) not attending elementary,
+CM,nmem1215,number of members ages (12-15),
+CN,nmem1215_male,number of male members ages (12-15),
+CO,nmem1215_female,number of female members ages (12-15),
+CP,nnths1215,number of members ages (12-15) not attending highschool,
+CQ,nnths1215_male,number of male members ages (12-15) not attending highschool,
+CR,nnths1215_female,number of female members ages (12-15) not attending highschool,
+CS,nmem612,number of members ages (6-12),
+CT,nmem612_male,number of male members ages (6-12),
+CU,nmem612_female,number of female members ages (6-12),
+CV,nntelem612,number of members ages (6-12) not attending elementary,
+CW,nntelem612_male,number of male members ages (6-12) not attending elementary,
+CX,nntelem612_female,number of female members ages (6-12) not attending elementary,
+CY,nmem1316,number of members ages (13-16),
+CZ,nmem1316_male,number of male members ages (13-16),
+DA,nmem1316_female,number of female members ages (13-16),
+DB,nnths1316,number of members ages (13-16) not attending highschool,
+DC,nnths1316_male,number of male members ages (13-16) not attending highschool,
+DD,nnths1316_female,number of female members ages (13-16) not attending highschool,
+DE,nmem1617,number of members ages (16-17),
+DF,nmem1617_male,number of male members ages (16-17),
+DG,nmem1617_female,number of female members ages (16-17),
+DH,nnths1617,number of members ages (16-17) not attending highschool,
+DI,nnths1617_male,number of male members ages (16-17) not attending highschool,
+DJ,nnths1617_female,number of female members ages (16-17) not attending highschool,
+DK,nmem615,number of members ages (6-15),to_drop_redundant
+DL,nmem615_male,number of male members ages (6-15),to_drop_redundant
+DM,nmem615_female,number of female members ages (6-15),to_drop_redundant
+DN,nntsch615,number of members ages (6-15) not attending school,to_drop_redundant
+DO,nntsch615_male,number of male members ages (6-15) not attending school,to_drop_redundant
+DP,nntsch615_female,number of female members ages (6-15) not attending school,to_drop_redundant
+DQ,nmem616,number of members ages (6-16),to_drop_redundant
+DR,nmem616_male,number of male members ages (6-16),to_drop_redundant
+DS,nmem616_female,number of female members ages (6-16),to_drop_redundant
+DT,nntsch616,number of members ages (6-16) not attending school,to_drop_redundant
+DU,nntsch616_male,number of male members ages (6-16) not attending school,to_drop_redundant
+DV,nntsch616_female,number of female members ages (6-16) not attending school,to_drop_redundant
+DW,nmem617,number of members ages (6-17),
+DX,nmem617_male,number of male members ages (6-17),
+DY,nmem617_female,number of female members ages (6-17),
+DZ,nntsch617,number of members ages (6-17) not attending school,
+EA,nntsch617_male,number of male members ages (6-17) not attending school,
+EB,nntsch617_female,number of female members ages (6-17) not attending school,
+EC,nmem1721,number of members ages (17-21),
+ED,nmem1721_male,number of male members ages (17-21),
+EE,nmem1721_female,number of female members ages (17-21),
+EF,ntert1721,number of members ages (17-21) not attending tertiary school,
+EG,ntert1721_male,number of male members ages (17-21) not attending tertiary school,
+EH,ntert1721_female,number of female members ages (17-21) not attending tertiary school,
+EI,nmem10ab,number of members 10 and above,
+EJ,nmem10ab_male,number of male members 10 and above,
+EK,nmem10ab_female,number of female members 10 and above,
+EL,nntliter10ab,number of members 10 and above who cannot read/write,
+EM,nntliter10ab_male,number of male members 10 and above who cannot read/write,
+EN,nntliter10ab_female,number of female members 10 and above who cannot read/write,
+EO,nmem1524,number of members ages (15-24),
+EP,nmem1524_male,number of male members ages (15-24),
+EQ,nmem1524_female,number of female members ages (15-24),
+ER,nliter1524,number of members ages (15-24) who cannot read/write,
+ES,nliter1524_male,number of male members ages (15-24) who cannot read/write,
+ET,nliter1524_female,number of female members ages (15-24) who cannot read/write,
+EU,wmem5,with members ages (0-5),
+EV,wntkinder5,with members ages (0-5) not attending kinder (OHE),
+EW,hh_wntkinder5,with members ages (0-5) not attending kinder (text_data),mistake on text_data. We need to correct
+EX,wmem611,with members ages (6-11),
+EY,wntelem611,with members ages (6-11) not attending elementary (OHE),
+EZ,hh_wntelem611,with members ages (6-11) not attending elementary (text_data),
+FA,wmem1215,with members ages (12-15),
+FB,wnths1215,with members ages (12-15) not attending highschool (OHE),
+FC,hh_wnths1215,with members ages (12-15) not attending highschool (text_data),
+FD,wmem612,with members ages (6-12),
+FE,wntelem612,with members ages (6-12) not attending elementary (OHE),
+FF,hh_wntelem612,with members ages (6-12) not attending elementary (text_data),
+FG,wmem1316,with members ages (13-16),
+FH,wnths1316,with members ages (13-16) not attending highschool (OHE),
+FI,hh_wnths1316,with members ages (13-16) not attending highschool (text_data),
+FJ,wmem1617,with members ages (16-17),
+FK,wnths1617,with members ages (16-17) not attending highschool (OHE),
+FL,hh_wnths1617,with members ages (16-17) not attending highschool (text_data),
+FM,wmem615,with members ages (6-15),to_drop_redundant
+FN,wntsch615,with members ages (6-15) not attending school (OHE),to_drop_redundant
+FO,hh_wntsch615,with members ages (6-15) not attending school (text_data),to_drop_redundant
+FP,wmem616,with members ages (6-16),to_drop_redundant
+FQ,wntsch616,with members ages (6-16) not attending school (OHE),to_drop_redundant
+FR,hh_wntsch616,with members ages (6-16) not attending school (text_data),to_drop_redundant
+FS,wmem617,with members ages (6-17),
+FT,wntsch617,with members ages (6-17) not attending school (OHE),
+FU,hh_wntsch617,with members ages (6-17) not attending school (text_data),
+FV,wmem10ab,with members ages 10 and above,
+FW,wntliter10ab,with members ages 10 and above who are illiterate (OHE),
+FX,hh_wntliter10ab,with members ages 10 and above who are illiterate (text_data),
+FY,wmem1524,with members ages (15-24),
+FZ,allliter1524,are all members ages(15-24) literate?,
+GA,wmem1721,with members ages (17-21),
+GB,alltert1721,are all members ages (17-21) attending tertiary school?,
+GC,povp,suffering from poverty? (OHE),
+GD,npovp,number of members if poverty,
+GE,npovp_male,number of male members if poverty,
+GF,npovp_female,number of female members if poverty,
+GG,hh_povp,suffering from poverty? (text_data),
+GH,subp,is subsistently poor? (OHE),
+GI,nsubp,number of members if subsistently poor,
+GJ,nsubp_male,number of male members if subsistently poor,
+GK,nsubp_female,number of female members if subsistently poor,
+GL,hh_subp,is subsistently poor? (text_data),
+GM,fshort,experienced food shortage? (OHE),
+GN,nfshort,number of members experienced food shortage,
+GO,nfshort_male,number of male members experienced food shortage,
+GP,nfshort_female,number of female members experienced food shortage,
+GQ,hh_fshort,experienced food shortage? (text_data),
+GR,nlabfor,number of members part of the labor force,
+GS,nlabfor_male,number of male members part of the labor force,
+GT,nlabfor_female,number of female members part of the labor force,
+GU,nunempl15ab,number of unemployed members part of the labor force ages 15 and above,
+GV,nunempl15ab_male,number of unemployed male members part of the labor force ages 15 and above,
+GW,nunempl15ab_female,number of unemployed female members part of the labor force ages 15 and above,
+GX,wlabfor,with members part of labor force (OHE),
+GY,wunempl15ab,with unemployed members part of labor force ages 15 and above (OHE),
+GZ,hh_wunempl15ab,with unemployed members part of labor force ages 15 and above (text_data),
+HA,nvictcr,number of members that are victims of crime,
+HB,nvictcr_male,number of male members that are victims of crime,
+HC,nvictcr_female,number of female members that are victims of crime,
+HD,wvictcr,with members victims of crime (OHE),
+HE,hh_wvictcr,with members victims of crime (text_data),
+HF,hh_totmem_sq,area of house in square meters,NOT SUUUUUURE
+HG,wtv,with tv,to_drop
+HH,wvhs,with vhs,to_drop
+HI,wref,with ref,to_drop
+HJ,wwmach,with washing machine,to_drop
+HK,wairc,with aircon,to_drop
+HL,wcar,with car,to_drop
+HM,wphone,with phone,to_drop
+HN,wcomputer,with computer,to_drop
+HO,wmicrow,with microwave,to_drop
+HP,welec,with elec,to_drop
+HQ,toilscore,I don’t know huhu,to_drop
+HR,nmem014,number of member ages (0-14),
+HS,nmem1564,number of members ages (15-64),
+HT,nmem65ab,number of members ages 65 and above,
+HU,depratio, dependents ratio,
+HV,hhage, total age of household (?),
+HW,hheduca2,?,
+HX,hheduca3,?,
+HY,hheduca4,?,
+HZ,hheduca5,?,
+IA,hheduca67,?,
+IB,hhntagri,?,
+IC,urb_loc, 1 - urban or 0 - rural,
