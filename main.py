@@ -14,8 +14,8 @@ st.set_page_config(layout="wide")
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 add_selectbox = st.sidebar.selectbox(
-    "Topics",
-    ("Introduction", "EDAs", "Poverty Classifier at Household Level", "Poverty Rate at Barangay Level", "Clustered Barangay")
+    "NAVIGATE",
+    ("Introduction", "Insights", "Poverty Classifier at Household Level", "Poverty Rate at Barangay Level", "Clustered Barangay")
 )
 
 
@@ -40,15 +40,24 @@ elif add_selectbox == "Poverty Classifier at Household Level":
         st.markdown(
             
         """
-        This is a GradientBoostingClassfier that classifies whether a household is poor or not based on specific features of a household in Cabanatuan City. We trained the model using the CBMS 2018 census of
-        Cabanatuan City. The household features below are selected by ...... (jac help hahaha).\n\n
+        This is a GradientBoostingClassfier that classifies whether a household is poor or not based on specific features of a household in Cabanatuan City. 
+        We trained the model using the CBMS 2018 census of Cabanatuan City. The household features below were selected by the multi-dimensions of poverty according to the CBMS 
+        (i.e., health, nutrition, housing, water and sanitation, basic education, income, employment, and peace and order). 
+        These dimensions were then narrowed down to ten based on our machine learning results. \n\n
 
-        Considering all the households in Cabanatuan, the plot below shows how important each features are to the decision making of the model. 
-        To give context on the plot, the more positive the value of a point is, the more the model
-        is leaning to classify a household as poor. For example, if the number of dependents aged 0 to 14 is high, there is a higher probability that the household is poor.
+        Considering all the households in Cabanatuan, the plot below shows how important each feature is to the decision making of the model. 
+        To interpret the plot, the more positive the value of a point is, the more the model is leaning to classify a household as poor. 
+        For example, if the number of dependents aged 0 to 14 is high, there is a higher probability that the household is poor. \n\n
+
+        Based on the plot below, our model predicts poverty according to the ratio of working members to their dependents. 
+        In short, the more mouths to feed on a small income, the more likely the household is to be classified as poor. 
+        It can be seen that the largest feature to predicting a non-poor household is the number of working members. 
+        The opposite is shown on other dimensions where scoring high tends to classify the household as poor.
         """
         )
-        st.image('shap.png')
+        c1, c2, c3, c4 = st.columns(4)
+        c1.image('shap.png', width = 1200)
+        st.markdown(" \n\n ")
 
     with features:
         st.subheader("Please input the necessary features of a household")
