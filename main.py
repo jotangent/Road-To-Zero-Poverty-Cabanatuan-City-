@@ -104,12 +104,12 @@ elif add_selectbox == "Poverty Classifier at Household Level":
         
 
         #dataset
-        df = pd.read_csv('data/df_cleaned_removed_outliers.csv', encoding='latin-1')
-        columns_df = pd.read_csv('data/column_details.csv')
+            df = pd.read_csv('data/df_cleaned_removed_outliers.csv', encoding='latin-1')
+            columns_df = pd.read_csv('data/column_details.csv')
 
-        df.drop(['Unnamed: 0','municipality'], axis=1, inplace=True)
+            df.drop(['Unnamed: 0','municipality'], axis=1, inplace=True)
 
-        df = df.rename(columns = {'ndeath05': 'infant mortality deaths',
+            df = df.rename(columns = {'ndeath05': 'infant mortality deaths',
                           'nmaln05': 'malnourished children 5 below',
                           'msh': 'makeshift housing',
                           'squat': 'informal settlers',
@@ -126,20 +126,21 @@ elif add_selectbox == "Poverty Classifier at Household Level":
                           'nmem1564': 'independents aged 15 to 64',
                           'nvictcr':'number of victims of crime'})
 
-        feature_cols = ['makeshift housing','informal settlers','number of children not in secondary','number of members not in tertiary',
-                'experienced food shortage','number of unemployed 15 and above', 'number of members working','dependents aged 0 to 14',
-                'dependents aged 65 and above', 'independents aged 15 to 64']
+            feature_cols = ['makeshift housing','informal settlers','number of children not in secondary','number of members not in tertiary',
+                            'experienced food shortage','number of unemployed 15 and above', 'number of members working','dependents aged 0 to 14',
+                            'dependents aged 65 and above', 'independents aged 15 to 64']
 
-        X = scaler.transform(df[feature_cols])
-        explainer = LimeTabularExplainer(X, mode="classification",
-                                 class_names=[0, 1],
-                                 feature_names=feature_cols,
-                                 discretize_continuous=True
-                                 )
-        to_predict = to_predict[0]
-        exp = explainer.explain_instance(to_predict, classification.predict_proba, num_features=10, top_labels=0)
+            X = scaler.transform(df[feature_cols])
+            explainer = LimeTabularExplainer(X, mode="classification",
+                                                class_names=[0, 1],
+                                                feature_names=feature_cols,
+                                                discretize_continuous=True
+                                            )
+            to_predict = to_predict[0]
 
-        components.html(exp.as_html())                      
+            exp = explainer.explain_instance(to_predict, classification.predict_proba, num_features=10, top_labels=0)
+
+            components.html(exp.as_html())                      
 
 
 
