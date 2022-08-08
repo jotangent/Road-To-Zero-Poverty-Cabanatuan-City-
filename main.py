@@ -15,7 +15,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 add_selectbox = st.sidebar.selectbox(
     "NAVIGATE",
-    ("Introduction", "Insights", "Poverty Classifier at Household Level", "Poverty Rate at Barangay Level", "Clustered Barangay")
+    ("Overview", "Methodology", "Poverty Classifier at Household Level", "Poverty Rate at Barangay Level", "Clustered Barangay")
 )
 
 
