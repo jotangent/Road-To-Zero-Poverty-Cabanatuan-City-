@@ -25,6 +25,54 @@ scaler = joblib.load('scaler.sav')
 
 class_names = {"Not Poor","Poor"}
 
+
+if add_selectbox == "Overview":
+    
+    header = st.container()
+    markdown = st.container()
+
+    with header:
+        c1,c2,c3 = st.columns(3)
+        st.markdown("""<div style="text-align: center;"><p style="font-size:40px"><b>
+        Insert Title
+        <b></p></div>""", unsafe_allow_html=True)
+
+    with markdown:
+        col1, col2 = st.columns(2)
+        st.markdown("""<div style="text-align: justify;"><img src='cbmslogo.PNG' align='top' />
+        There are a lot of things that can influence a person's everyday life. From one's health and nutrition, to their community's peace and order, experiences could vastly differ. That being said, we, as data scientists, would like to understand this in a much deeper and quantifiable manner. This is where we would like to introduce the CBMS, or the Community Based Monitoring System, 
+        which is an organized technology-based system of collecting, processing and validating data. This may be used for planning, program implementation and impact monitoring at the local level, 
+        while empowering communities to participate in the process.
+        </div>""", unsafe_allow_html=True)
+        st.markdown('<p style="font-size:12px">source: https://psa.gov.ph/content/community-based-monitoring-system-act<br></p>', unsafe_allow_html=True)
+
+        st.markdown("""<div style="text-align: justify;">
+        We were fortunate to have access to CBMS data from an LGU, particularly from Cabanatuan, and were asked to analyze and share insights. 
+        We wanted our analysis to be in line with the UN's Sustainable Development Goals or SDGs, with emphasis to SDG #1 which is No Poverty.
+        """, unsafe_allow_html=True)
+
+        st.markdown("""<div style="text-align: justify;"><br>
+        But to have a future with no poverty, it is important to know the nature and extent of poverty: who the poor are, where they are, and why they are poor. 
+        """, unsafe_allow_html=True)
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if add_selectbox == "Introduction":
     st.header('Introduction')  
 
