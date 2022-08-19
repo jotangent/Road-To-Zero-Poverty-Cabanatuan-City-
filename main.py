@@ -15,7 +15,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 add_selectbox = st.sidebar.selectbox(
     "NAVIGATE",
-    ("Overview", "Methodology", "Poverty Classifier at Household Level", "Poverty Rate at Barangay Level", "Clustered Barangay")
+    ("Overview", "Poverty Classifier at Household Level", "Poverty Rate at Barangay Level", "Clustered Barangay")
 )
 
 
@@ -32,14 +32,11 @@ if add_selectbox == "Overview":
     markdown = st.container()
 
     with header:
-        c1,c2,c3 = st.columns(3)
-        st.markdown("""<div style="text-align: center;"><p style="font-size:40px"><b>
-        Insert Title
-        <b></p></div>""", unsafe_allow_html=True)
+        st.header("Road To Zero Poverty: A machine learning approach to alleviating poverty in Cabanatuan City")
 
     with markdown:
         col1, col2 = st.columns(2)
-        st.markdown("""<div style="text-align: justify;"><img src='cbmslogo.PNG' align='top' />
+        st.markdown("""<div style="text-align: justify;">
         There are a lot of things that can influence a person's everyday life. From one's health and nutrition, to their community's peace and order, experiences could vastly differ. That being said, we, as data scientists, would like to understand this in a much deeper and quantifiable manner. This is where we would like to introduce the CBMS, or the Community Based Monitoring System, 
         which is an organized technology-based system of collecting, processing and validating data. This may be used for planning, program implementation and impact monitoring at the local level, 
         while empowering communities to participate in the process.
