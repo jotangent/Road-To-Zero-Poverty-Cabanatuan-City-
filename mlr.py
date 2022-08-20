@@ -17,7 +17,39 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-#prop_cols3 = pd.read_csv('data/prop_cols3_renamed.csv')
+
+
+prop_cols = pd.read_csv('data/df_prop_rename.csv', index_col=[0])
+shapefile = gpd.read_file('data/Streamlit_Map/sl_map.shp')
+shapefile["x"] = shapefile.geometry.centroid.x
+shapefile["y"] = shapefile.geometry.centroid.y
+
+
+### ---------------------------------------------------------------
+shapefile = shapefile.rename(columns = {'ndeath05_prop': 'Infant mortality deaths prop',
+                          'Malnourish': 'Malnourished Children 5 Yrs. Below Proportion',
+                          'ntsws_prop':'No access to safe water',
+                          'ntstf_prop': 'No access to sanitary toilet',
+                          'nntelem611_prop': 'Children not in elementary',
+                          'nnths1215_prop': 'Children not in secondary',
+                          'ntert1721_prop': 'Children not in tertiary',
+                          'fshort_prop': 'Experienced food shortage',
+                          'nunempl15ab_prop': 'Unemployed 15 and above',
+                          'nlabfor_prop': 'People working',
+                          'nmem014_prop': 'Dependents aged 0 to 14',
+                          'nmem65ab_prop': 'Dependents aged 65 and above',
+                          'nmem1564_prop': 'Eligible working people',
+                          'nvictcr_prop':'Number of victims of crime',
+                          'nntsws_prop': 'No access to safe water',
+                          'nntelem612_prop': 'Ages (6-12) not attending elementary',
+                          'nnths1617_prop': 'Ages (16-17) not attending highschool',
+                          'nntliter10ab_prop': 'Ages (10 and above) not literate',
+                          'nfshort_prop': 'Experienced food shortage',
+                          'age_dep_prop': 'Dependents (0-14, 65+)',
+                          'dep_prop': 'Unemployed dependents',
+                          'npovp_prop': 'number of poor'})
+
+### ---------------------------------------------------------------
 
 
 st.set_page_config(layout="wide")
@@ -50,6 +82,9 @@ if my_page == 'Multiple Linear Regression':
     st.caption("Values are automatically in % unit. No need to type %.")
     
     
+    st.title(prop_cols.columns) #this is a df
+    st.title(shapefile.columns) #this is a shp file
+
     
     ### Input values to X variables of MLR
     st.title("")
@@ -162,9 +197,6 @@ elif my_page == 'Poverty Interactive Map':
     st.caption("")
     st.caption("Instructions:")
     st.caption("1. Select View from Left Pane. Choose if you want to view a particular brgy. or all barangays.")
-    shapefile = gpd.read_file('data/Streamlit_Map/sl_map.shp')
-    shapefile["x"] = shapefile.geometry.centroid.x
-    shapefile["y"] = shapefile.geometry.centroid.y
     map_center = [15.47, 121.035]
 
 
@@ -178,12 +210,11 @@ elif my_page == 'Poverty Interactive Map':
         option1a = st.sidebar.selectbox(
         'Select Core Poverty Indicator',
             ['-- Please Select Poverty Core Indicator --'] + 
-            shapefile.drop(['OBJECTID', 'NAME', 'Shape_Leng', 'Shape_Area', 'x', 'y', 'NAME_REV', 'barangay', 'geometry'],
-                           axis = 1).columns.values.tolist())
+            prop_cols.drop(['barangay', 'cluster_labels'], axis = 1).columns.values.tolist())
         
 
         
-        if option1a in shapefile.columns.values.tolist():
+        if option1a in prop_cols.columns.values.tolist():
             
             
             # Styling the map
@@ -241,7 +272,7 @@ elif my_page == 'Poverty Interactive Map':
                     folium.Marker([lat, lon], popup = name, tooltip = name).add_to(marker_cluster)
             folium_static(mymap)
 
-        
+
     
     
 # elif my_page == 'About the Project':
