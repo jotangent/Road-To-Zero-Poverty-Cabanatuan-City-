@@ -191,7 +191,7 @@ if my_page == 'Multiple Linear Regression':
         
 elif my_page == 'Poverty Interactive Map':
     option1 = st.sidebar.selectbox(
-    'View Selection', ['-- Please Select View --', 'One Barangay Only', 'All Barangays'])
+    'View Selection', ['-- Please Select View --', 'One Barangay Only', 'Cluster', 'All Barangays'])
     
     st.title("Interactive Cabanatuan Barangay Map")
     st.caption("")
@@ -247,7 +247,74 @@ elif my_page == 'Poverty Interactive Map':
                     folium.Popup(parse_html = True, show = True)
                 folium_static(mymap)
             
+    if option1 == "Cluster":
+        cluster_number = 0
+        clusters = pd.read_csv('data/df_per_cluster_prop_rename.csv', index_col=[0])
+        st.caption("2. Select Core Povery Indicator from Left Pane. There are 14 indicators available.")
 
+        option1a = st.sidebar.selectbox(
+        'Select Core Poverty Indicator',
+            ['-- Please Select Poverty Core Indicator --'] + 
+            prop_cols.drop(['barangay', 'cluster_labels'], axis = 1).columns.values.tolist())
+
+        if option1a in prop_cols.columns.values.tolist():
+            # Styling the map
+#             mymap = folium.Map(location=map_center, height=700, width=1000, tiles="OpenStreetMap", zoom_start=12)
+#             marker_cluster = MarkerCluster().add_to(mymap)
+
+            option_reg = st.sidebar.selectbox(
+                'Select Cluster', ['-- Please select a cluster --', '0', '1', '2', '3'])
+
+            if option_reg == '-- Please select a cluster --':
+                st.caption("3. Select a cluster in from Left Pane. There are 4 clusters for selection.")
+
+            else:
+                st.caption("3. Select a cluster from Left Pane. There are 4 clusters for selection.")
+
+#                 st.subheader('You selected: proportion of <>' + option1a + ' under the ' + option_reg + ' cluster')
+                st.caption("")
+                st.caption("")
+#                 age_dep_desc = '<p style="font-family:Arial; color:White; font-size: 20px;"><b>Percentage of Age Dependents</b></p>'
+                st.markdown("<span style=' font-size: 25px'>You selected: Proportion of <span style='color:#ffbfbf'>" + option1a + "</span> <br/>in the <span style='color:#ffbfbf'>" + option_reg + '</span> cluster</span>', unsafe_allow_html=True)
+                
+                if option_reg == '3':
+                    cluster_number = 3
+                if option_reg == '2':
+                    cluster_number = 2
+                if option_reg == '1':
+                    cluster_number = 1
+                if option_reg == '0':
+                    cluster_number = 0
+                
+                result = pd.DataFrame(clusters[clusters['cluster_labels'] == cluster_number][option1a])
+                st.title(result.iloc[0,0])
+                                    
+                reg = option_reg
+                df_reg = shapefile[shapefile["cluster_la"]==reg]
+                mymap = folium.Map(location=map_center, height=700, width=1000, tiles="OpenStreetMap", zoom_start=12)
+                marker_cluster = MarkerCluster().add_to(mymap)
+                                
+                heatmap_cluster_df = prop_cols[prop_cols['cluster_labels'] == cluster_number][['barangay', option1a]]
+                heatmap_merged_data = pd.merge(shapefile, heatmap_cluster_df, how='outer')
+                heatmap_merged_data[option1a].fillna(-1.9999, inplace=True)
+
+                # set a variable that will call whatever column we want to visualise on the map
+                variable = option1a
+                # set the range for the choropleth
+                vmin, vmax = heatmap_merged_data[variable].min(), heatmap_merged_data[variable].max()
+
+                # create figure and axes for Matplotlib
+                fig, ax = plt.subplots(1, figsize=(15, 10))
+
+                # Complete the code
+                heatmap_merged_data.plot(column=variable, cmap='Oranges', linewidth=0.8, ax=ax, edgecolor='0.8', vmin=vmin, vmax=vmax)
+
+                plt.title('test2')
+
+                sm = plt.cm.ScalarMappable(cmap='Oranges', norm=plt.Normalize(vmin=vmin, vmax=vmax))
+                cbar = fig.colorbar(sm)
+
+                st.pyplot(fig)
             
 
     elif option1 == "All Barangays":
