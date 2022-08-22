@@ -34,19 +34,73 @@ my_page = st.sidebar.radio('Page Navigation', ['EDA test','Multiple Linear Regre
 
 if my_page == 'EDA test':
     
+    # test with folium
+    data_all = pd.read_csv('data/shapefile_renamed_barangays.csv')
+    data_geo = gpd.read_file('data/Brgy_Boundaries/BrgyBoundary_WGS84.shp')
+    
+    def center():
+        address = 'Surabaya, ID'
+        geolocator = Nominatim(user_agent="id_explorer")
+        location = geolocator.geocode(address)
+        latitude = location.latitude
+        longitude = location.longitude
+        return latitude, longitude
+    
+    #for changing type of the maps
+    add_select = st.sidebar.selectbox("What data do you want to see?",("OpenStreetMap", "Stamen Terrain","Stamen Toner"))
+    #for calling the function for getting center of maps
+    centers = center()
+    #showing the maps
+    map_sby = folium.Map(tiles=add_select, location=[runs[0], runs[1]], zoom_start=12)
+    #design for the app
+    st.title('Map of Surabaya')
+    folium_static(map_sby)
+    
     poverty_feature = st.selectbox("Please select a feature.",
                  ('hh_totmem','ndeath05','nmaln05','msh','squat','ntsws','ntstf',
                   'nntelem611','nnths1215','ntert1721','povp','subp','fshort',
                   'nunempl15ab','nlabfor','nvictcr'))
+    
     df = pd.read_csv("data/df_cleaned_removed_outliers.csv")
     filtered_df = df.groupby('barangay')[poverty_feature].sum().sort_values(ascending=False)
+    filtered_df2 = df.groupby('barangay').agg({poverty_feature:'sum'})
     if st.checkbox("Select to view numbers", value=False):
         st.write(filtered_df)
     
+    # option 1 - plotly (easy to follow order as horizontal bar chart)
     fig=px.bar(filtered_df,x=poverty_feature,y=filtered_df.index, orientation='h')
     st.write(fig)
+    # option 2 - st.bar_chart (more interactive)
+    st.bar_chart(filtered_df2)
     
     
+    # testing heatmap application
+    
+    shapefile = gpd.read_file('data/Brgy_Boundaries/BrgyBoundary_WGS84.shp')
+    shapefile["x"] = shapefile.geometry.centroid.x
+    shapefile["y"] = shapefile.geometry.centroid.y
+    
+    shapefile_rev = pd.read_csv('data/shapefile_renamed_barangays.csv')
+    shapefile['NAME_REV'] = shapefile_rev['NAME']
+    
+    merged_data1 = pd.merge(shapefile, filtered_df, left_on = 'NAME_REV', right_on ='barangay')
+    
+    # set a variable that will call whatever column we want to visualise on the map
+    variable = poverty_feature
+    # set the range for the choropleth
+    vmin, vmax = merged_data1[variable].min(), merged_data1[variable].max()
+
+    # create figure and axes for Matplotlib
+    fig2, ax = plt.subplots(1, figsize=(15, 10))
+
+    # Complete the code
+    merged_data1.plot(column=variable, cmap='Oranges', linewidth=0.8, ax=ax, edgecolor='0.8', vmin=vmin, vmax=vmax)
+
+    plt.title('Number of Poor Households per barangay')
+
+    sm = plt.cm.ScalarMappable(cmap='Oranges', norm=plt.Normalize(vmin=vmin, vmax=vmax))
+    cbar = fig2.colorbar(sm)
+
 if my_page == 'Multiple Linear Regression':
     
 
