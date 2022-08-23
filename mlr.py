@@ -346,6 +346,43 @@ elif my_page == 'Poverty Interactive Map':
             
             st.subheader('You selected: All Barangays & ' + option1b)
             
+            if option1b == 'Malnourished Children 5 Yrs. Below':
+                st.write("insert write up")
+            elif option1b == 'Living as Squatters':
+                st.write("")
+            elif option1b == 'Living in Makeshift Housing':
+                st.write("")
+            elif option1b == 'No Access to Sanitary Toilet':
+                st.write("")
+            elif option1b == 'No Access to Sanitary Toilet':
+                st.write("")
+            elif option1b == 'Ages (5 and below) Not in Kinder':
+                st.write("")
+            elif option1b == 'Ages (6-11) Not in Elementary':
+                st.write("")
+            elif option1b == 'Ages (12-15) Not in Junior High School':
+                st.write("")
+            elif option1b == 'Ages (16-17) Not Senior High School':
+                st.write("")
+            elif option1b == 'Ages (17-21) Not in Tertiary':
+                st.write("")
+            elif option1b == 'Ages (10 and above) Not Literate':
+                st.write("")
+            elif option1b == 'Poor Household':
+                st.write("")
+            elif option1b == 'Subsistently Poor Household':
+                st.write("")
+            elif option1b == 'Experienced Food Shortage':
+                st.write("")
+            elif option1b == 'Ages (15 and Above) Unemployed':
+                st.write("")
+            elif option1b == 'Number of Victims of Crime':
+                st.write("")
+            elif option1b == 'Dependents  Ages (0-14, 65+)':
+                st.write("")
+            elif option1b == 'Unemployed Dependents':
+                st.write("")
+                
             for i in np.arange(len(shapefile)):
                     lat = shapefile["y"][i]
                     lon = shapefile["x"][i]
@@ -357,8 +394,10 @@ elif my_page == 'Poverty Interactive Map':
             folium_static(mymap)
             
             filtered_df = prop_cols.groupby('barangay').agg({option1b:'sum'})
-            st.bar_chart(filtered_df)
+            st.bar_chart(filtered_df, height = 400, width =2000)
             
+            
+   
         else:
             st.write("")
     
