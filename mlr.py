@@ -222,11 +222,11 @@ if my_page == 'Multiple Linear Regression':
                                                                   to_predict_df[feature_cols].values.reshape(-1, 1))\
                                                                   .flatten()[0], axis=1)
         
-        recommendation_df = prop_cols.sort_values('Euclidean Distance')[:3]
+        recommendation_df = prop_cols.sort_values('Euclidean Distance')[:1]
         
         
         st.caption("Below are the most similar barangays compared to the Predicted Percentage of Poor in Barangay and the input values.")
-        st.caption("The closer the cosine distance to zero means it has high similarity.")
+        st.caption("The closer the Euclidean Distance to zero means it has high similarity.")
         st.caption("")
         st.dataframe(recommendation_df[['barangay', 'Euclidean Distance'] + feature_cols])
         
@@ -318,7 +318,8 @@ elif my_page == 'Poverty Interactive Map':
                 for i in np.arange(len(df_reg)):
                     lat = df_reg["y"].values[i]
                     lon = df_reg["x"].values[i]
-                    name = option1a + ": " + str(shapefile[option1a][i])
+##changes to be added in main.py
+                    name = option1a + ": " + str("{:.2f}".format(shapefile[option1a][i])) + "%"
                     mymap = folium.Map(location=[lat - 0.03, lon + 0.05], height=700, width=1000, tiles="OpenStreetMap", zoom_start=12)
                     marker_cluster = MarkerCluster().add_to(mymap)
                     folium.Marker([lat, lon], popup= name, tooltip = name).add_to(marker_cluster)
@@ -346,7 +347,10 @@ elif my_page == 'Poverty Interactive Map':
             for i in np.arange(len(shapefile)):
                     lat = shapefile["y"][i]
                     lon = shapefile["x"][i]
-                    name = option1b + ": " + str(shapefile[option1b][i]) + '<br> Brgy. Name: ' + str(shapefile['barangay'][i])
+##changes to be added in main.py
+                    name = option1b + ": " + str("{:.2f}".format(shapefile[option1b][i])) + '%' + '<br> Brgy. Name: ' + \
+                    str(shapefile['barangay'][i]) 
+                    
                     folium.Marker([lat, lon], popup = name, tooltip = name).add_to(marker_cluster)
             folium_static(mymap)
 
