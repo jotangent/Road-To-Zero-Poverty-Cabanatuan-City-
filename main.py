@@ -74,25 +74,37 @@ if my_page == "About the Project":
         st.header("Road To Zero Poverty: A machine learning approach to alleviating poverty in Cabanatuan City")
 
     with markdown:
-        col1, col2 = st.columns(2)
+        c1,c2,c3 = st.columns([1,5,1])
         st.markdown("""<div style="text-align: justify;">
         There are a lot of things that can influence a person's everyday life. From one's health and nutrition, to their community's peace and order, experiences could vastly differ. That being said, we, as data scientists, would like to understand this in a much deeper and quantifiable manner. This is where we would like to introduce the CBMS, or the Community Based Monitoring System, 
         which is an organized technology-based system of collecting, processing and validating data. This may be used for planning, program implementation and impact monitoring at the local level, 
         while empowering communities to participate in the process.
         </div>""", unsafe_allow_html=True)
-        st.markdown('<p style="font-size:12px">source: https://psa.gov.ph/content/community-based-monitoring-system-act<br></p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:12px"><b>source: https://psa.gov.ph/content/community-based-monitoring-system-act<br></b></p>', unsafe_allow_html=True)
 
         st.markdown("""<div style="text-align: justify;">
         We were fortunate to have access to CBMS data from an LGU, particularly from Cabanatuan, and were asked to analyze and share insights. 
         We wanted our analysis to be in line with the UN's Sustainable Development Goals or SDGs, with emphasis to SDG #1 which is No Poverty.
-        """, unsafe_allow_html=True)
+        </div>""", unsafe_allow_html=True)
+        
+        st.markdown("""<div style="text-align: justify;"><br>
+        The Community-Based Monitoring System (CBMS) is designed to cover various dimensions in characterizing the poverty situation at the local government level. 
+        The data gathered is intended to be utilized in developing a local program that includes social services and opportunities towards improving the quality of life for all.
+        </div>""", unsafe_allow_html=True)
+
+        df = pd.read_csv('data/df_cleaned_removed_outliers.csv', encoding='latin-1')
+        columns_df = pd.read_csv('data/column_details.csv')
+        df = df.drop('Unnamed: 0', axis=1)
+
+        st.dataframe(df)
 
         st.markdown("""<div style="text-align: justify;"><br>
-        But to have a future with no poverty, it is important to know the nature and extent of poverty: who the poor are, where they are, and why they are poor. 
-        """, unsafe_allow_html=True)
-        
+        The CBMS census was conducted last 2018 in Cabanatuan and the results were unfortunately not retired by the PSA. 
+        </div>""", unsafe_allow_html=True)
 
-
+        st.subheader("""
+        Exploratory Data Analysis
+        """)
 
 
 
