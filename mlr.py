@@ -330,14 +330,16 @@ elif my_page == 'Poverty Interactive Map':
             
 
     elif option1 == "All Barangays":
+        st.caption("2. Select Core Povery Indicator from Left Pane. There are 14 indicators available.")
+        
         # Styling the map
         mymap = folium.Map(location=map_center, height=700, width=1000, tiles="OpenStreetMap", zoom_start=12)
         marker_cluster = MarkerCluster().add_to(mymap)
             
         option1b = st.sidebar.selectbox(
         'Select Poverty Core Indicator',
-            ['-- Please Poverty Core Indicator --'] + 
-            shapefile.drop(['OBJECTID', 'NAME', 'Shape_Leng', 'Shape_Area', 'x', 'y', 'NAME_REV', 'barangay', 'geometry'],
+            ['-- Please Select Poverty Core Indicator --'] + 
+            shapefile.drop(['OBJECTID', 'NAME', 'Shape_Leng', 'Shape_Area', 'x', 'y', 'NAME_REV', 'barangay', 'geometry', 'cluster_la', 'Household'],
                            axis = 1).columns.values.tolist())
         
         if option1b in shapefile.columns.values.tolist():
@@ -353,8 +355,12 @@ elif my_page == 'Poverty Interactive Map':
                     
                     folium.Marker([lat, lon], popup = name, tooltip = name).add_to(marker_cluster)
             folium_static(mymap)
-
-
+            
+            filtered_df = prop_cols.groupby('barangay').agg({option1b:'sum'})
+            st.bar_chart(filtered_df)
+            
+        else:
+            st.write("")
     
     
 # elif my_page == 'About the Project':
