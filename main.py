@@ -100,13 +100,46 @@ if my_page == "About the Project":
         st.dataframe(df)
 
         st.markdown("""<div style="text-align: justify;"><br>
-        The CBMS census was conducted last 2018 in Cabanatuan and the results were unfortunately not retired by the PSA. 
+        The CBMS census was conducted last 2018 in Cabanatuan and the results were unfortunately not returned by the PSA. 
         </div>""", unsafe_allow_html=True)
 
+        # --------------EDA-----------------
         st.subheader("""
         Exploratory Data Analysis
         """)
 
+        # HEALTH AND NUTRITION
+        st.markdown("""<div style="text-align: justify;"><br>
+        <b>1. Health and Nutrition:</b>
+        <br>
+        For this domain, CBMS is primarily investigating children under 5 years old who died, women deaths due to pregnancy-related causes, and children 0-5 years old who are malnourished.
+        </div>""", unsafe_allow_html=True)
+
+        c1,c2,c3 = st.columns([2,5,2])
+        
+        with c1:
+            st.write("")
+        with c2:
+            st.write("INSERT PLOT HERE")
+        with c3:
+            st.write("")
+
+        # HOUSING
+        st.markdown("""<div style="text-align: justify;"><br>
+        <b>2. Housing </b>
+        <br>
+        This indicator includes households living in makeshift housing, and households classified as informal settlers.
+        </div>""", unsafe_allow_html=True)
+
+        c1,c2,c3 = st.columns([2,5,2])
+        
+        with c1:
+            st.write("")
+        with c2:
+            st.write("INSERT PLOT HERE")
+        with c3:
+            st.write("")
+        
 
 
 
