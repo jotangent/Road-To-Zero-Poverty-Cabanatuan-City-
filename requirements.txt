@@ -8,3 +8,4 @@ numpy
 shap
 geopandas
 folium
+plotly
