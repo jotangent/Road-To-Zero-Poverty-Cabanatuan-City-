@@ -6,4 +6,5 @@ matplotlib
 streamlit
 numpy
 shap
-pandas
+geopandas
+folium
