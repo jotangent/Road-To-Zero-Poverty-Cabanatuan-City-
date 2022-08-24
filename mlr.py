@@ -14,7 +14,9 @@ import warnings
 
 import pandas as pd
 import numpy as np
+import json
 import matplotlib.pyplot as plt
+
 
 from sklearn.metrics.pairwise import euclidean_distances, manhattan_distances, cosine_similarity
 
@@ -384,15 +386,37 @@ elif my_page == 'Poverty Interactive Map':
                 st.write("")
                 
             for i in np.arange(len(shapefile)):
-                    lat = shapefile["y"][i]
-                    lon = shapefile["x"][i]
+                lat = shapefile["y"][i]
+                lon = shapefile["x"][i]
 ##changes to be added in main.py
-                    name = option1b + ": " + str("{:.2f}".format(shapefile[option1b][i])) + '%' + '<br> Brgy. Name: ' + \
-                    str(shapefile['barangay'][i]) 
+                name = option1b + ": " + str("{:.2f}".format(shapefile[option1b][i])) + '%' + '<br> Brgy. Name: ' + \
+                str(shapefile['barangay'][i]) 
                     
-                    folium.Marker([lat, lon], popup = name, tooltip = name).add_to(marker_cluster)
+                folium.Marker([lat, lon], popup = name, tooltip = name).add_to(marker_cluster)
+            
+            st.caption("Interactive map of geo points")
             folium_static(mymap)
             
+            brgy_data = pd.read_csv('data/df_prop_json_match.csv')
+            json_geo_data = json.load(open('data/cabanatuan_brgy.json'))
+            
+            
+            cab_choro_map = folium.Map(location = [15.494598024981352, 120.970035904559], tiles='cartodbpositron', zoom_start=12)
+            
+            cab_choro_map.choropleth(
+                geo_data = json_geo_data,
+                data = brgy_data,
+                columns = ['barangay', option1b],
+                key_on = 'feature.properties.NAME_3',
+                fill_color='YlGnBu',
+                fill_opacity = 0.3,
+                line_weight=2
+            )
+            
+            st.caption(f"Heatmap of all barangays measured by {option1b}")
+            folium_static(cab_choro_map)
+            
+            st.caption(f"Bar graphs of all barangays measured by {option1b}")
             filtered_df = prop_cols.groupby('barangay').agg({option1b:'sum'})
             st.bar_chart(filtered_df, height = 400, width =2000)
             
