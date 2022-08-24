@@ -9,3 +9,4 @@ shap
 geopandas
 folium
 plotly
+streamlit_folium
