@@ -827,7 +827,7 @@ elif my_page == 'Poverty Interactive Map':
         option1a = st.sidebar.selectbox(
         'Select Core Poverty Indicator',
             ['-- Please Select Poverty Core Indicator --'] + 
-            prop_cols.drop(['barangay', 'cluster_labels'], axis = 1).columns.values.tolist())
+            prop_cols.drop(['barangay', 'cluster_labels', 'Household Total Members'], axis = 1).columns.values.tolist())
         
 
         
@@ -897,7 +897,7 @@ elif my_page == 'Poverty Interactive Map':
         option1a = st.sidebar.selectbox(
         'Select Core Poverty Indicator',
             ['-- Please Select Poverty Core Indicator --'] + 
-            prop_cols.drop(['barangay', 'cluster_labels'], axis = 1).columns.values.tolist())
+            prop_cols.drop(['barangay', 'cluster_labels', 'Household Total Members'], axis = 1).columns.values.tolist())
 
         if option1a in prop_cols.columns.values.tolist():
 
