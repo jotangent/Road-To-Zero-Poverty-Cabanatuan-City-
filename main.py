@@ -963,7 +963,15 @@ elif my_page == 'Poverty Interactive Map':
             st.write("")
 
 elif my_page == 'Road Map to Alleviating Poverty':
-    st.image('pictures/road_map.png')
+
+    c1,c2,c3 = st.columns([1,10,1])
+    with c1:
+        st.write("")
+    with c2:
+        image = Image.open('pictures/road_map.png')
+        st.image(image)
+    with c3:
+        st.write("")
 
 
 
